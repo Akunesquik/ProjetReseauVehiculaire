@@ -7,7 +7,7 @@ import json
 ##from pandas.io.json import json_normalize
 import os, sys
 
-# Made by Louis
+# Made by Louis le boss
 class ExtendedObject:
     def __init__(self, ext_obj_entry):
         self.PerceivedObjectID = ext_obj_entry.get("PerceivedObjectID")
