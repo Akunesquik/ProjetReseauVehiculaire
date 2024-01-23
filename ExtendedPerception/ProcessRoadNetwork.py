@@ -68,7 +68,7 @@ for element in root.iter(tag='junction'):
 print (junction_df) """
 
 ###################################################################################################################################
-
+"""
 with open('C:\\Users\\Louis\\Downloads\\miiproet_1_2\\ExtendedPerception\\Genuine\\extp_attackrate_0.100000_807.json', 'r') as file:
     data = json.load(file)
 
@@ -82,4 +82,4 @@ if "EP" in data:
         timestamps.append(entry["timestamp"])
 
 
-print(timestamps)
+print(timestamps)"""
