@@ -20,12 +20,12 @@ class ExtendedObject:
 
 
 class DataObject:
-    def __init__(self, data_entry):
-        self.id = data_entry.get("myStationId")
-        self.timestamps = [entry.get("timestamp") for entry in data_entry.get("EP", [])]
-        self.x = data_entry.get("Xegosumoposition")
-        self.y = data_entry.get("Yegopsumoposition")
-        self.extended_objects = self.extract_extended_objects(data_entry)
+    def __init__(self, entry):
+        self.id = entry.get("myStationId")
+        self.timestamps = entry.get("timestamp")
+        self.x = entry.get("Xegosumoposition")
+        self.y = entry.get("Yegopsumoposition")
+        ##self.extended_objects = self.extract_extended_objects(entry)
 
     def extract_extended_objects(self, entry):
         extended_objects = []
@@ -35,7 +35,7 @@ class DataObject:
         return extended_objects
 
     def __str__(self):
-        return f"Classe: {self.id}, Timestamps: {self.timestamps}, X: {self.x}, Y: {self.y}, Extended Objects: {self.extended_objects}"
+        return f"id: {self.id}, Timestamps: {self.timestamps}, X: {self.x}, Y: {self.y}"#, Extended Objects: {self.extended_objects}"
 # Il a crée deux classes
 
 """ xtree = et.parse('IRTSystemX.net.xml')
@@ -68,18 +68,14 @@ for element in root.iter(tag='junction'):
 print (junction_df) """
 
 ###################################################################################################################################
-"""
+
 with open('C:\\Users\\Louis\\Downloads\\miiproet_1_2\\ExtendedPerception\\Genuine\\extp_attackrate_0.100000_807.json', 'r') as file:
     data = json.load(file)
-
 result=[]
 
-# Vérifier si la clé "EP" existe dans le JSON
-if "EP" in data:
-    # Parcourir chaque objet dans la liste "EP"
-    for entry in data["EP"]:
-        # Vérifier si la clé "timestamp" existe dans l'objet
-        timestamps.append(entry["timestamp"])
+for entry in data.get("EP", []):
+    result+=[str(DataObject(entry))]
 
 
-print(timestamps)"""
+
+print(result)
