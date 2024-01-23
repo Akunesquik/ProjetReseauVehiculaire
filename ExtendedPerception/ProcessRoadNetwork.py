@@ -35,7 +35,7 @@ class DataObject:
 
     def __str__(self):
         extended_objects_str = f",\n ".join([str(obj) for obj in self.extended_objects])
-        return f"\nClasse: {self.id}, Timestamp: {self.timestamps}, X: {self.x}, Y: {self.y}, Extended Objects: {extended_objects_str}"
+        return f"\nClasse: {self.id}, Timestamp: {self.timestamps}, X: {self.x}, Y: {self.y}, Extended Objects:\n {extended_objects_str}"
 
 
 ###################################################################################################################################
