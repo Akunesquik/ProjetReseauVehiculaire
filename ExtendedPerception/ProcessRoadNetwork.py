@@ -39,6 +39,13 @@ class DataObject:
 
 
 ###################################################################################################################################
+def traitement_ext_obj(entry):
+        extended_objects = []
+        for ext_obj_entry in entry.get("Extended_Perceived_Objects", []):
+            ext_obj = ExtendedObject(ext_obj_entry)
+            extended_objects.append(ext_obj)
+        return extended_objects
+
 
 with open('ExtendedPerception\\Genuine\\extp_attackrate_0.100000_807.json', 'r') as file:
     json_data = json.load(file)
