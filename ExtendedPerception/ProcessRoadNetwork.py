@@ -24,6 +24,7 @@ class DataObject:
         self.timestamps = data_entry.get("timestamp")
         self.x = data_entry.get("Xegosumoposition")
         self.y = data_entry.get("Yegopsumoposition")
+        self.orientation = data_entry.get("orientationangle")
         self.extended_objects = self.extract_extended_objects(data_entry)
 
     def extract_extended_objects(self, entry):
@@ -35,7 +36,7 @@ class DataObject:
 
     def __str__(self):
         extended_objects_str = f",\n ".join([str(obj) for obj in self.extended_objects])
-        return f"\nClasse: {self.id}, Timestamp: {self.timestamps}, X: {self.x}, Y: {self.y}, Extended Objects:\n {extended_objects_str}"
+        return f"\nClasse: {self.id}, Timestamp: {self.timestamps}, X: {self.x}, Y: {self.y},orientation {self.orientation}, Extended Objects:\n {extended_objects_str}"
 
 
 ###################################################################################################################################
