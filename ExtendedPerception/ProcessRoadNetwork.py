@@ -25,7 +25,7 @@ class DataObject:
         self.timestamps = entry.get("timestamp")
         self.x = entry.get("Xegosumoposition")
         self.y = entry.get("Yegopsumoposition")
-        ##self.extended_objects = self.extract_extended_objects(entry)
+        self.extended_objects = self.extract_extended_objects(entry)
 
     def extract_extended_objects(self, entry):
         extended_objects = []
@@ -35,7 +35,7 @@ class DataObject:
         return extended_objects
 
     def __str__(self):
-        return f"id: {self.id}, Timestamps: {self.timestamps}, X: {self.x}, Y: {self.y}"#, Extended Objects: {self.extended_objects}"
+        return f"id: {self.id}, Timestamps: {self.timestamps}, X: {self.x}, Y: {self.y}, Extended Objects: {self.extended_objects}"
 # Il a crée deux classes
 
 """ xtree = et.parse('IRTSystemX.net.xml')
@@ -74,8 +74,8 @@ with open('C:\\Users\\Louis\\Downloads\\miiproet_1_2\\ExtendedPerception\\Genuin
 result=[]
 
 for entry in data.get("EP", []):
-    result+=[str(DataObject(entry))]
+    result+=[DataObject(entry)]
 
 
 
-print(result)
+print(str(result[0].extended_objects))
